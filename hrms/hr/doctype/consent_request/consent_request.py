@@ -26,6 +26,12 @@ class ConsentRequest(Document):
         topic: DF.Data | None
     # end: auto-generated types
 
+    def on_trash(self):
+        current_users = get_users_by_share_with_type(self)
+        for user in current_users:
+            frappe.db.delete("User Consent", {"related_user": user, "request_details": self.name})
+        return
+
     def validate(self):
         if not frappe.db.exists("Consent Request", self.name):
             # Handle the case where the record does not exist
