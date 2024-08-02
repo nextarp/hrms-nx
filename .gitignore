@@ -18,3 +18,4 @@ node_modules
 hrms/docs/current
 hrms/public/frontend
 hrms/www/hrms.html
+.idea
