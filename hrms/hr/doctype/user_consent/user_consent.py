@@ -28,3 +28,9 @@ class UserConsent(Document):
         if self.approve:
             self.status = "Approved"
             self.approved_at = frappe.utils.now()
+
+
+@frappe.whitelist()
+def get_consent_attachments(request_details):
+    attachments = frappe.get_all("Consent Attachment", filters={"parent": request_details}, fields=["attachment"])
+    return [attachment["attachment"] for attachment in attachments]

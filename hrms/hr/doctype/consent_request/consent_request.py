@@ -109,7 +109,6 @@ def get_users_by_share_with_type(consent_request):
 
 
 def set_consent_request_details(consent_request, self):
-    consent_request.attachment = self.attachments
     consent_request.topic = self.topic
     consent_request.language = self.language
     consent_request.dutch_description = self.dutch_description

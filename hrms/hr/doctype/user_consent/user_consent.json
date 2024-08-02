@@ -13,7 +13,7 @@
   "column_break_onmq",
   "approve",
   "approved_at",
-  "attachment",
+  "attachments",
   "section_break_nprj",
   "language",
   "dutch_description",
@@ -55,12 +55,6 @@
    "fieldname": "approve",
    "fieldtype": "Check",
    "label": "Approve"
-  },
-  {
-   "fieldname": "attachment",
-   "fieldtype": "Attach",
-   "label": "Attachment",
-   "read_only": 1
   },
   {
    "fieldname": "section_break_nprj",
@@ -122,11 +116,17 @@
    "fieldtype": "Datetime",
    "label": "Approved at",
    "read_only": 1
+  },
+  {
+   "fieldname": "attachments",
+   "fieldtype": "Table",
+   "label": "Attachments",
+   "options": "Consent Attachment"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-02 13:13:37.113849",
+ "modified": "2024-08-02 16:37:02.501708",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "User Consent",
