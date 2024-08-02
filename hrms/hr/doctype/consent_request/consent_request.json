@@ -15,8 +15,13 @@
   "column_break_acmc",
   "date",
   "attachments",
-  "section_break_fwdq",
-  "description"
+  "description_section",
+  "column_break_ccqf",
+  "language",
+  "dutch_description",
+  "english_description",
+  "turkish_description",
+  "polish_description"
  ],
  "fields": [
   {
@@ -51,16 +56,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "section_break_fwdq",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "description",
-   "fieldtype": "Text Editor",
-   "label": "Description",
-   "reqd": 1
-  },
-  {
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "label": "Series",
@@ -90,11 +85,51 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Topic"
+  },
+  {
+   "fieldname": "description_section",
+   "fieldtype": "Section Break",
+   "label": "Description"
+  },
+  {
+   "fieldname": "language",
+   "fieldtype": "Select",
+   "label": "Language",
+   "options": "Dutch\nEnglish\nTurkish\nPolish"
+  },
+  {
+   "depends_on": "eval:doc.language == 'Dutch'",
+   "fieldname": "dutch_description",
+   "fieldtype": "Text Editor",
+   "label": "Description (NL)"
+  },
+  {
+   "depends_on": "eval:doc.language == 'English'",
+   "fieldname": "english_description",
+   "fieldtype": "Text Editor",
+   "label": "Description (EN)"
+  },
+  {
+   "depends_on": "eval:doc.language == 'Turkish'",
+   "fieldname": "turkish_description",
+   "fieldtype": "Text Editor",
+   "label": "Description (TR)"
+  },
+  {
+   "depends_on": "eval:doc.language == 'Polish'",
+   "fieldname": "polish_description",
+   "fieldtype": "Text Editor",
+   "label": "Description (PL)"
+  },
+  {
+   "depends_on": "eval:doc.language == 'Turkish'",
+   "fieldname": "column_break_ccqf",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-07-30 14:44:48.588717",
+ "modified": "2024-08-02 12:54:55.963786",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Consent Request",

@@ -53,9 +53,7 @@ class ConsentRequest(Document):
             consent_request = frappe.new_doc("User Consent")
             consent_request.related_user = user
             consent_request.request_details = self.name
-            consent_request.description = self.description
-            consent_request.attachment = self.attachments
-            consent_request.topic = self.topic
+            set_consent_request_details(consent_request, self)
             consent_request.insert()
 
         return
@@ -70,9 +68,7 @@ class ConsentRequest(Document):
                 consent_request = frappe.new_doc("User Consent")
                 consent_request.related_user = user.name
                 consent_request.request_details = self.name
-                consent_request.description = self.description
-                consent_request.attachment = self.attachments
-                consent_request.topic = self.topic
+                set_consent_request_details(consent_request, self)
                 consent_request.save()
         elif shared_with_type == "Role":
             # get all users in the role
@@ -82,9 +78,7 @@ class ConsentRequest(Document):
                 consent_request = frappe.new_doc("User Consent")
                 consent_request.related_user = user.parent
                 consent_request.request_details = self.name
-                consent_request.description = self.description
-                consent_request.attachment = self.attachments
-                consent_request.topic = self.topic
+                set_consent_request_details(consent_request, self)
                 consent_request.save()
         elif shared_with_type == "Employees":
             # get all users in the role
@@ -97,9 +91,7 @@ class ConsentRequest(Document):
                 user = frappe.get_value("User", {"email": employee}, "name")
                 consent_request.related_user = user
                 consent_request.request_details = self.name
-                consent_request.description = self.description
-                consent_request.attachment = self.attachments
-                consent_request.topic = self.topic
+                set_consent_request_details(consent_request, self)
                 consent_request.insert()
         return
 
@@ -114,3 +106,13 @@ def get_users_by_share_with_type(consent_request):
     elif consent_request.share_with == "All Users":
         return set(frappe.get_all("User", pluck="name"))
     return set()
+
+
+def set_consent_request_details(consent_request, self):
+    consent_request.attachment = self.attachments
+    consent_request.topic = self.topic
+    consent_request.language = self.language
+    consent_request.dutch_description = self.dutch_description
+    consent_request.english_description = self.english_description
+    consent_request.turkish_description = self.turkish_description
+    consent_request.polish_description = self.polish_description
