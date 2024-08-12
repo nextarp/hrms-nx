@@ -12,11 +12,12 @@ frappe.ui.form.on("User Consent", {
 				frm.set_df_property("approve", "read_only", 1);
 			}
         }
+		let request_details = frm.doc.request_details ? frm.doc.request_details : "";
 		// Send a backend request to get consent attachments
 		frappe.call({
 			method: "hrms.hr.doctype.user_consent.user_consent.get_consent_attachments",
 			args: {
-				request_details: frm.doc.request_details
+				request_details: request_details
 			},
 			callback: function (r) {
 				if (r.message) {
